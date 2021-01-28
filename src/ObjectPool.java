@@ -7,10 +7,6 @@ public abstract class ObjectPool<T> {
 
     public abstract T generate();
 
-    public ObjectPool(){
-        poolRef=new WeakReference<>(new ConcurrentLinkedQueue<>());
-    }
-
     public T get(){
         T obj=getPool().poll();
         return obj==null ? generate():obj;
